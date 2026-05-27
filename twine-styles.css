@@ -1,0 +1,728 @@
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-out {
+    0%,
+    to {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes rumble {
+    25% {
+        top: -0.1em;
+    }
+
+    75% {
+        top: 0.1em;
+    }
+
+    0%,
+    to {
+        top: 0;
+    }
+}
+
+@keyframes shudder {
+    25% {
+        left: 0.1em;
+    }
+
+    75% {
+        left: -0.1em;
+    }
+
+    0%,
+    to {
+        left: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0, 0);
+    }
+
+    20% {
+        transform: scale(1.2, 1.2);
+    }
+
+    40% {
+        transform: scale(0.9, 0.9);
+    }
+
+    60% {
+        transform: scale(1.05, 1.05);
+    }
+
+    80% {
+        transform: scale(0.925, 0.925);
+    }
+
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale(0, 0);
+    }
+
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100vw);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-1em);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(1em);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(1em);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-1em);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+html {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    position: relative;
+    box-sizing: inherit;
+}
+
+
+/* =========================================================
+   TWINE STORY CONTAINER
+   ========================================================= */
+
+tw-story {
+    text-align: justify;
+    text-justify: inter-word;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100%;
+
+    padding: 5% 5%;
+
+    overflow: hidden;
+
+    background-color: #000;
+    color: #c9c3ba;
+
+    font: 100% Georgia, serif;
+    font-size: 1.5em;
+    line-height: 1.5em;
+
+    box-sizing: border-box;
+}
+
+@media (min-width: 576px) {
+    tw-story {
+        padding: 5% 20%;
+    }
+}
+
+tw-passage {
+    display: block;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+tw-sidebar {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+    tw-sidebar {
+        position: absolute;
+        left: -5em;
+
+        width: 3em;
+
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   CHOICE LINKS / OPTIONS
+   ========================================================= */
+
+tw-link {
+    display: block;
+
+    margin: 14px 0;
+    padding: 14px 18px;
+
+    border: 2px solid #ffd65d;
+    border-radius: 10px;
+
+    background: rgba(255, 214, 93, 0.08);
+
+    color: #e6cb7d;
+
+    font-weight: bold;
+    font-size: 1.05em;
+    line-height: 1.4;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+/* hover */
+tw-link:hover {
+    background: rgba(255, 214, 93, 0.18);
+
+    color: #fff1b8;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 12px rgba(255, 214, 93, 0.25);
+}
+
+/* click */
+tw-link:active {
+    transform: translateY(1px);
+
+    background: rgba(255, 214, 93, 0.28);
+
+    color: #e6b800;
+}
+
+/* visited */
+.visited {
+    color: #d4b24c;
+}
+
+.visited:hover {
+    color: #fff1b8;              /* very light gold hover */
+}
+
+
+/* =========================================================
+   BROKEN LINKS
+   ========================================================= */
+
+tw-broken-link {
+    color: #933;
+    border-bottom: 2px solid #933;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DIALOGS
+   ========================================================= */
+
+tw-dialog {
+    display: block;
+
+    padding: 2em;
+
+    background-color: #000;
+    color: #fff;
+
+    border: #fff solid 2px;
+
+    z-index: 999997;
+}
+
+@media (min-width: 576px) {
+    tw-dialog {
+        max-width: 50vw;
+    }
+}
+
+tw-dialog-links {
+    display: flex;
+    justify-content: flex-end;
+
+    padding-top: 1.5em;
+}
+
+
+/* =========================================================
+   BACKDROP
+   ========================================================= */
+
+tw-backdrop {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.8);
+
+    z-index: 999996;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+tw-story input[type="text"],
+tw-story textarea,
+tw-story select {
+    background-color: transparent;
+
+    color: inherit;
+    font: inherit;
+
+    padding: 2px;
+}
+
+tw-story textarea {
+    resize: none;
+    border-style: none;
+}
+
+tw-story input[type="text"] {
+    border-style: none;
+}
+
+tw-story select {
+    border-style: solid;
+}
+
+tw-story input[type="checkbox"] {
+    transform: scale(1.5);
+
+    margin: 0 0.5em 0.5em 0.5em;
+
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.25em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0.3em 0 0.6em 0;
+    line-height: 1em;
+}
+
+small {
+    font-size: 70%;
+}
+
+big {
+    font-size: 120%;
+}
+
+pre {
+    font-size: 1rem;
+    line-height: initial;
+}
+
+
+/* =========================================================
+   SPECIAL ELEMENTS
+   ========================================================= */
+
+mark {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #ff9;
+}
+
+ins {
+    color: rgba(0, 0, 0, 0.6);
+
+    background-color: rgba(255, 242, 204, 0.5);
+
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.2em #ffe699;
+
+    text-decoration: none;
+}
+
+center {
+    width: 60%;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+blink {
+    text-decoration: none;
+    animation: fade-in-out 1s steps(1, end) infinite alternate;
+}
+
+
+/* =========================================================
+   COLUMNS
+   ========================================================= */
+
+tw-columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+tw-align {
+    display: block;
+}
+
+
+/* =========================================================
+   TRANSITIONS
+   ========================================================= */
+
+.transition-in {
+    animation: appear 0ms step-start;
+}
+
+.transition-out {
+    animation: appear 0ms step-end;
+}
+
+[data-t8n="fade"].transition-in {
+    animation: appear 0.8s;
+}
+
+[data-t8n="fade"].transition-out {
+    animation: appear 0.8s reverse;
+}
+
+[data-t8n^="pulse"].transition-in {
+    display: inline-block !important;
+    animation: pulse 0.8s;
+}
+
+[data-t8n^="pulse"].transition-out {
+    display: inline-block !important;
+    animation: pulse 0.8s reverse;
+}
+
+[data-t8n^="zoom"].transition-in {
+    display: inline-block !important;
+    animation: zoom-in 0.8s;
+}
+
+[data-t8n^="zoom"].transition-out {
+    display: inline-block !important;
+    animation: zoom-in 0.8s reverse;
+}
+
+
+/* =========================================================
+   ICONS
+   ========================================================= */
+
+tw-icon {
+    display: inline-block;
+
+    margin: 0.5em 0;
+
+    font-size: 66px;
+    font-family: Verdana, sans-serif;
+}
+
+tw-icon[alt] {
+    opacity: 0.2;
+    cursor: pointer;
+}
+
+tw-icon[alt]:hover {
+    opacity: 0.4;
+}
+
+
+/* =========================================================
+   ERRORS / DEBUG
+   ========================================================= */
+
+tw-error {
+    display: inline-block;
+
+    padding: 0.2em;
+
+    border-radius: 0.2em;
+
+    font-size: 1rem;
+
+    cursor: help;
+    white-space: pre-wrap;
+}
+
+tw-error.error {
+    background-color: rgba(223, 58, 190, 0.6);
+    color: #fff;
+}
+
+tw-error.warning {
+    display: none;
+
+    background-color: rgba(223, 140, 58, 0.6);
+    color: #fff;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+   ========================================================= */
+
+tw-notifier {
+    display: none;
+
+    padding: 0.2em;
+
+    border-radius: 0.2em;
+
+    background-color: rgba(223, 182, 58, 0.4);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+tw-open-button,
+tw-folddown {
+    cursor: pointer;
+
+    padding: 3px;
+    margin: 0 0.2rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+
+    font-size: 0.8rem;
+    line-height: 0;
+
+    white-space: pre;
+}
+
+
+/* =========================================================
+   HIDDEN DATA
+   ========================================================= */
+
+tw-storydata {
+    display: none;
+}
+
+/* =========================================================
+   ENDING SCREEN
+   ========================================================= */
+
+.ending-logo {
+    display: block;
+    margin: 0 auto 24px auto;
+
+    max-width: 110px;
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    filter:
+        drop-shadow(0 0 2px #ffd65d)
+        drop-shadow(0 0 6px rgba(255, 214, 93, 0.35));
+}
+
+.ending-text {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 24px;
+    line-height: 1.7;
+    color: #ffffff;
+}
+
+.ending-note {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 32px;
+
+    color: #b8b8b8;
+
+    font-size: 0.9em;
+    font-style: italic;
+    line-height: 1.7;
+
+    opacity: 0.9;
+}
+
+.ending-thanks {
+    margin-bottom: 16px;
+
+    text-align: center;
+
+    color: #ffd65d;
+
+    font-size: 1.15em;
+    font-weight: bold;
+}
+
+.ending-button-wrapper {
+    text-align: center;
+}
+
+.donate-button {
+    display: inline-block;
+
+    padding: 12px 30px;
+
+    border: 2px solid #ffd65d;
+    border-radius: 10px;
+
+    background: rgba(255, 214, 93, 0.08);
+
+    color: #ffd65d;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.donate-button:hover {
+    background: rgba(255, 214, 93, 0.18);
+
+    color: #fff1b8;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 14px rgba(255, 214, 93, 0.25);
+}
+
+.donate-button:active {
+    transform: translateY(1px);
+
+    background: rgba(255, 214, 93, 0.28);
+}
