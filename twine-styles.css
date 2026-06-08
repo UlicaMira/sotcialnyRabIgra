@@ -726,3 +726,8 @@ tw-storydata {
 
     background: rgba(255, 214, 93, 0.28);
 }
+
+.restart-button-wrapper tw-link {
+    width: fit-content;
+    margin: 0 auto;
+}
